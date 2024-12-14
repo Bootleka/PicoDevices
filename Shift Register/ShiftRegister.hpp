@@ -5,6 +5,18 @@ typedef unsigned int uint;
 typedef unsigned char uint8_t;
 
 // Designed for the the (74HC595||74HCT595) 8-bit serial in shift register with output latches
+
+/* Tips for the register:
+ *
+ * To clear register on startup without pins:
+ * 		You can put a capacitor (100nF) from the MR pin to ground
+ * 		and a resistor (10K) from the MR pin to 5V
+ * 		[Also add a Diode (1N4148) from MR to 5V ?]
+ *		Solution from: https://forum.arduino.cc/t/prevent-shift-register-to-start-at-random-state/488244/5
+ *
+ *		Havent tested above tip but it seems useful
+ */
+
 class ShiftRegister
 {
 public:
@@ -60,15 +72,5 @@ private:
 	int pReclear; // Master Reclear pin (LOW to clear register)
 	int pEnable; // Output enable pin (LOW to enable register output)
 };
-
-/* Tips for the register:
- *
- * To clear register on startup without pins:
- * 	You can put a capacitor (100nF) from the MR pin to ground
- * 	and a resistor (10K) from the MR pin to 5V
- * 	[Diode (1N4148) from MR to 5V]?
- *
- * 	https://forum.arduino.cc/t/prevent-shift-register-to-start-at-random-state/488244/5
- */
 
 #endif // SHIFTREGISTER_HPP

@@ -3,7 +3,14 @@
 
 typedef unsigned int uint;
 
+// Designed for the MG310P20 motor with a magnetic encoder and the L298N motor driver module
+
 /* Important info regarding this device:
+ *
+ * This code uses IRQ (Interrupt Requests) to get the speed and direction of the motor. I noticed no
+ * preformance problems with it but your implemetation may differ. I belive the pico has multithreading
+ * capabilities and this could also probably be solved with PIO so I am working on that and will publish
+ * them when finished.
  *
  * Motor wire order and color
  * (Based on my model. Your colors or order may be different. In parentesis I include how I connected them. CHECK YOUR DATASHEET)
@@ -26,7 +33,6 @@ typedef unsigned int uint;
  * the volatile on isClockwise, the code will work just fine.
 */
 
-// Designed for the MG310P20 motor with a magnetic encoder and the L298N motor driver module
 class EncMotor 
 {
 public:
