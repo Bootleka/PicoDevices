@@ -4,14 +4,14 @@
 typedef unsigned int uint;
 typedef unsigned char uint8_t;
 
-// Made for the the (74HC595||74HCT595) 8-bit serial in shift register with output latches
+// Designed for the the (74HC595||74HCT595) 8-bit serial in shift register with output latches
 class ShiftRegister
 {
 public:
 	// Automatically call store after each write(...) and clear()
 	bool doAutoStore = true;
 
-	/* Important info:
+	/* Important info about initialization:
 	 *
 	 * If pReclear is valid  ->  the SHIFT register will initialize cleared (STORAGE register will maintain its value).
 	 * If pEnable is valid   ->  the register will initialize enabled.
